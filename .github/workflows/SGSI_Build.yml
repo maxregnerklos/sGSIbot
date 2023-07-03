@@ -138,6 +138,3 @@ jobs:
           files: SGSIs/output/*.img.gz
           name: SGSI137-${{ env.ROM }}-Android${{ env.VERSION }}
           tag_name: ${{ env.VERSION }}
-
-env:
-  GH_TOKEN: ${{ secrets.GH_TOKEN }}
