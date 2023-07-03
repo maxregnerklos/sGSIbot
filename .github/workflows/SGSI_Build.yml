@@ -114,13 +114,6 @@ jobs:
           send \"bye\r\"
           interact"
 
-      - name: Upload SGSI to WeTransfer...
-        if: ${{ env.WET == 'true' }}
-        run: |
-          cd SGSIs/output
-          curl -sL https://git.io/file-transfer | sh
-          sudo chmod a+x transfer
-          ./transfer wet ./*img.gz
 
       - name: Upload SGSI to PixelDrain...
         if: ${{ env.PD == 'true' }}
@@ -129,11 +122,3 @@ jobs:
           wget https://raw.githubusercontent.com/Fornax96/pdup/master/pdup
           sudo chmod a+x pdup
           ./pdup ./*img.gz
-
-      - name: Upload SGSI to GitHub Release...
-        if: ${{ env.GHR == 'true' }}
-        uses: softprops/action-gh-release@v1
-        with:
-          files: SGSIs/output/*.img.gz
-          name: SGSI137-${{ env.ROM }}-Android${{ env.VERSION }}
-          tag_name: ${{ env.VERSION }}
